@@ -1,26 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import CartButton from './CartButton';
+import SearchButton from './SearchButton';
+import UserButton from './UserButton';
 
 
 const Navbar = () => {
   return (
     <div className='navbar text-align-center'>
-        <div className="logo">
-            Logo eCommerce
+        <div className="left">
+            <div className="logo">
+                Logo eCommerce
+            </div>
+            <ul className='menu'>
+                <li>
+                    <Link to={`https://simewhere`}>Something</Link>
+                </li>
+                <li>
+                    <Link to={`https://simewhere`}>Something</Link>
+                </li>
+                <li>
+                    <Link to={`https://simewhere`}>Something</Link>
+                </li>
+                <li>
+                    <Link to={`https://simewhere`}>Something</Link>
+                </li>
+            </ul>
         </div>
-        <ul className='menu'>
+        <ul className="other menu">
             <li>
-                <Link to={`https://simewhere`}>Something</Link>
+                <UserButton />
             </li>
             <li>
-                <Link to={`https://simewhere`}>Something</Link>
-            </li>
-            <li>
-                <Link to={`https://simewhere`}>Something</Link>
-            </li>
-            <li>
-                <Link to={`https://simewhere`}>Something</Link>
+                <SearchButton />
             </li>
             <li>
                 <CartButton />
