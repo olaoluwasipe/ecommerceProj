@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiHeart } from 'react-icons/fi';
-import { data } from '../products';
 import { Link } from 'react-router-dom';
+import { useCart } from '../Context/CartContext';
 
 interface ProductPercs {
     id: number;
@@ -24,8 +24,19 @@ interface ProductItemProps {
     product: ProductPercs
 }
 
-
 const ProductItem: React.FC<ProductItemProps> = ( {product} ) => {
+    const { cart, addToCart } = useCart();
+
+    const handleAddToCart = (productId: number, productName: string, productImage: string, productQuantity: number, productPrice: number) => {
+        addToCart( {
+            id: productId,
+            name: productName,
+            image: productImage,
+            quantity: productQuantity,
+            price: productPrice
+        })
+        console.log(cart)
+    }
   return (
     <div className='productItem'>
         <Link to={product.slug} className="imgContainer">
@@ -35,7 +46,9 @@ const ProductItem: React.FC<ProductItemProps> = ( {product} ) => {
         <Link to={product.slug}><h3>{product.name}</h3></Link>
         <div className="bottomArea">
             <div className="buttons">
-                <button className='addToCart'>Add to Cart</button>
+                <button 
+                onClick={() => handleAddToCart(product.id, product.name, product.images[0], 1, product.discount_price ? product.discount_price : product.price)}
+                className='addToCart'>Add to Cart</button>
                 <button><FiHeart /></button>
             </div>
             <div className="price">
