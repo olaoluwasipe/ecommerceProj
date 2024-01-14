@@ -30,7 +30,7 @@ const CartButton = () => {
                 <h4>{item.name}</h4>
                 <div className="bottom">
                   <p>x {item.quantity}</p>
-                  <p>{item.price * item.quantity}</p>
+                  <p>{(item.price * item.quantity).toFixed(2)}</p>
                 </div>
                 <button onClick={() => handleRemoveFromCart(item.id)} className="deleteBtn">
                   <FiTrash /> Remove

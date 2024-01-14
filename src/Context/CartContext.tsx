@@ -6,6 +6,7 @@ interface CartContextProps {
   getTotalAmount: () => number;
   getTotalItems: () => number;
   removeFromCart: (id: number) => void;
+  isInCart: (id: number) => boolean;
 }
 
 export interface CartItem {
@@ -42,8 +43,18 @@ export const CartProvider: React.FC<CartProps> = ({ children }) => {
 
     if(selectedItemIndex !== -1) {
       const currentCart = [...cart];
-      const updateCart = currentCart.splice(selectedItemIndex, 1);
+      currentCart.splice(selectedItemIndex, 1);
       setCart(currentCart);
+    }
+  }
+
+  const isInCart = (id: number) => {
+    const selectedItem = cart.findIndex((cartItem) => cartItem.id === id);
+
+    if(selectedItem !== -1) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -56,7 +67,7 @@ export const CartProvider: React.FC<CartProps> = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, getTotalAmount, getTotalItems, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, getTotalAmount, getTotalItems, removeFromCart, isInCart }}>
       {children}
     </CartContext.Provider>
   );
