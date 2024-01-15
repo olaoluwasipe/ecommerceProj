@@ -27,6 +27,8 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ( {product} ) => {
     const { cart, addToCart, isInCart } = useCart();
     const [inCart, setinCart] = useState(isInCart(product.id));
+    let productImages = product.images
+    if(typeof product.images === 'string') productImages = JSON.parse(product.images)
 
     const handleAddToCart = (productId: number, productName: string, productImage: string, productQuantity: number, productPrice: number) => {
         addToCart( {
@@ -42,14 +44,14 @@ const ProductItem: React.FC<ProductItemProps> = ( {product} ) => {
     return (
         <div className='productItem'>
             <Link to={product.slug} className="imgContainer">
-                <img src={product.images[0]} alt="" />
-                <img src={product.images.length > 1 ? product.images[1] : product.images[0]} alt="" />
+                <img src={productImages[0]} alt="" />
+                <img src={productImages.length > 1 ? productImages[1] : productImages[0]} alt="" />
             </Link>
             <Link to={product.slug}><h3>{product.name}</h3></Link>
             <div className="bottomArea">
                 <div className="buttons">
                     <button 
-                    onClick={() => handleAddToCart(product.id, product.name, product.images[0], 1, product.discount_price ? product.discount_price : product.price)}
+                    onClick={() => handleAddToCart(product.id, product.name, productImages[0], 1, product.discount_price ? product.discount_price : product.price)}
                     className='addToCart'>{inCart ? 'Added' : 'Add'} to Cart</button>
                     <button><FiHeart /></button>
                 </div>

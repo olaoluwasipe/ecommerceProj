@@ -1,5 +1,5 @@
 export const data: FashionStoreData = {
-  "products": [
+  "data": [
     {
       "id": 1,
       "name": "Product A",
@@ -158,7 +158,7 @@ interface Product {
 }
 
 interface FashionStoreData {
-  products: Product[];
+  data: Product[];
 }
 
 // Create a prop interface for your component

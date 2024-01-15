@@ -3,6 +3,8 @@
 // index.php
 require 'classes/Route.php';
 
+require 'cors.php';
+
 // Define routes
 Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
