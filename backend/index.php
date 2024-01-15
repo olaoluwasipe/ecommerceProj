@@ -7,6 +7,7 @@ require 'classes/Route.php';
 Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
 Route::post('/contact', 'ContactController@submit');
+Route::post('/products', 'ProductController@index');
 
 // Dispatch the request
 Route::dispatch();

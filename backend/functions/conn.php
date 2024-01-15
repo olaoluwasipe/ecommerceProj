@@ -1,5 +1,5 @@
 <?php
-require_once '../classes/Database.php';
+require_once 'classes/DatabaseConnection.php';
 
     $host = 'localhost';
     $username = 'root';

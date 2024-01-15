@@ -46,7 +46,7 @@ class Route
         require_once 'controllers/' . $controller . '.php';
 
         // Include the model file
-        require_once 'models/' . $controller . '.php';
+        // require_once 'models/' . $controller . '.php';
 
         // Create an instance of the controller and call the method
         $controllerInstance = new $controller();
