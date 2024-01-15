@@ -24,7 +24,7 @@ const CartButton = () => {
         <div className={`cartItems ${showCartItems}`}>
           {cart.length < 1 ? 'There are no items in the cart' : ''}
           {cart.map((item) => (
-            <div className="cartItem">
+            <div key={item.id} className="cartItem">
               <img src={item.image} alt="" />
               <div className="info">
                 <h4>{item.name}</h4>

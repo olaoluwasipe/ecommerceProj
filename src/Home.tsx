@@ -21,7 +21,7 @@ const Home = () => {
           </div>
           <div className="categories">
             {data.categories.map(category => (
-              <CategoryItem  key={category.id} id={category.id} name={category.name} image={category.image} subcategories={category.subcategories} />
+              <CategoryItem key={category.id} id={category.id} name={category.name} image={category.image} subcategories={category.subcategories} />
             ))}
           </div>
         </div>
